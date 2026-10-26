@@ -1,0 +1,27 @@
+\chapter{Difficultés rencontrées et solutions}
+\minitoc
+\newpage
+
+
+\section{Extensions PHP non activées}
+
+La principale difficulté rencontrée lors de l\textquotesingle installation a concerné l\textquotesingle absence d\textquotesingle activation des extensions PHP gd, soap et zip, indispensables au bon fonctionnement d\textquotesingle iTop. Cette difficulté a été résolue par la modification du fichier de configuration php.ini, comme détaillé dans la section précédente.
+
+\section{Indisponibilité de Graphviz}
+
+Lors de l\textquotesingle installation, iTop a signalé que l\textquotesingle outil Graphviz n\textquotesingle était pas disponible correctement à l\textquotesingle emplacement attendu :
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{1.0000}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+HC:\textbackslash Program Files\textbackslash Graphviz\textbackslash bin\textbackslash dot.exe \\
+\end{longtable}
+
+Cette limitation n\textquotesingle empêche cependant pas le fonctionnement général de l\textquotesingle application. Elle concerne principalement l\textquotesingle affichage de certaines représentations graphiques ainsi que l\textquotesingle analyse d\textquotesingle impact au sein de la CMDB. L\textquotesingle installation et la configuration de Graphviz ont ainsi été identifiées comme une amélioration à apporter ultérieurement.
+
+Après ces différents ajustements, l\textquotesingle ensemble des difficultés rencontrées lors de l\textquotesingle installation a été résolu et la plateforme iTop a pu être mise en place avec succès.
+
+

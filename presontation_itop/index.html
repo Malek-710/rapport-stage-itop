@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiche iTop by Combodo — ITSM & CMDB Open Source</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f5f5;
+  color: #370202;
+  line-height: 1.5;
+  padding: 24px;
+}
+.sheet {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.header-left h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.header-left .subtitle {
+  font-size: 15px;
+  color: #a0aec0;
+  font-weight: 400;
+}
+.header-right {
+  text-align: right;
+}
+.badge {
+  display: inline-block;
+  background: #10b981;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+.badge-outline {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+.content {
+  padding: 32px 40px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fafafa;
+}
+.card h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #480308;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h2 .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 11px;
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+.card ul li {
+  font-size: 13px;
+  color: #4b5563;
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.card ul li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: 700;
+}
+.card p {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+.tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tech-tag {
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+th {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #f3f4f6;
+}
+.check { color: #10b981; font-weight: 700; }
+.cross { color: #ef4444; font-weight: 700; }
+.footer {
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #9ca3af;
+}
+.highlight-box {
+  background: #ecfdf5;
+  border-left: 4px solid #10b981;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 24px;
+}
+.highlight-box h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #065f46;
+  margin-bottom: 6px;
+}
+.highlight-box p {
+  font-size: 13px;
+  color: #047857;
+  line-height: 1.6;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .sheet { box-shadow: none; border-radius: 0; }
+}
+@media (max-width: 640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .header { flex-direction: column; text-align: center; }
+  .header-right { text-align: center; }
+  .content { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="header">
+    <div class="header-left">
+      <h1>iTop by Combodo</h1>
+      <div class="subtitle">IT Operations Portal — ITSM & CMDB Open Source</div>
+    </div>
+    <div class="header-right">
+      <div><span class="badge">Open Source</span><span class="badge-outline">AGPL</span></div>
+      <div style="margin-top:4px;font-size:12px;color:#9ca3af;">Conforme ITIL · Gratuit · Personnalisable</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="highlight-box">
+      <h3>En résumé</h3>
+      <p>iTop est une solution open source de gestion des services informatiques (ITSM) et de gestion des configurations (CMDB) développée par Combodo. Elle centralise l'infrastructure IT, respecte les bonnes pratiques ITIL et est utilisée par des milliers d'entreprises — des PME aux grandes organisations.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2><span class="icon">F</span> Principales fonctionnalités</h2>
+        <ul>
+          <li>Help Desk (tickets incidents & demandes)</li>
+          <li>CMDB complète (Configuration Items)</li>
+          <li>Change Management (gestion des changements)</li>
+          <li>Problem Management (gestion des problèmes)</li>
+          <li>IT Asset Management (actifs IT)</li>
+          <li>Gestion des services, contrats & SLA</li>
+          <li>Rapports, tableaux de bord & KPI</li>
+          <li>API REST & extensions/plugins</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="icon">T</span> Architecture technique</h2>
+        <div class="tech-row" style="margin-bottom:12px;">
+          <span class="tech-tag">PHP</span>
+          <span class="tech-tag">MySQL / MariaDB</span>
+          <span class="tech-tag">Web</span>
+          <span class="tech-tag">AGPL</span>
+        </div>
+        <p style="margin-bottom:10px;">Application web accessible via navigateur. Déploiement sous Linux recommandé.</p>
+        <h2 style="margin-top:16px;"><span class="icon">I</span> Intégrations</h2>
+        <ul>
+          <li>Zabbix (supervision)</li>
+          <li>LDAP / Active Directory (auth)</li>
+          <li>Outils de supervision (alertes)</li>
+          <li>API REST (tout système externe)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h2><span class="icon">U</span> Cas d'usage</h2>
+        <ul>
+          <li>Inventaire équipements IT</li>
+          <li>Suivi serveurs, PC, imprimantes</li>
+          <li>Gestion tickets support</li>
+          <li>Gestion actifs & cycle de vie</li>
+          <li>Relations CI & dépendances</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="icon">A</span> Avantages</h2>
+        <ul>
+          <li>100% gratuit (Community)</li>
+          <li>Très personnalisable</li>
+          <li>Conforme ITIL v3/v4</li>
+          <li>CMDB intégrée & complète</li>
+          <li>Adapté PME & grands groupes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="icon">P</span> Idéal pour stages / PFE</h2>
+        <ul>
+          <li>Installation Linux & config</li>
+          <li>Gestion d'une CMDB</li>
+          <li>Processus ITIL (I/C/P)</li>
+          <li>Intégration Zabbix / LDAP</li>
+          <li>Admin sys, DevOps, ITSM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px;">
+      <h2><span class="icon">C</span> Comparaison rapide</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Outil</th><th>Ticketing</th><th>CMDB</th><th>Asset Management</th><th>Open Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>iTop</strong></td><td class="check">✓</td><td class="check">✓ Excellent</td><td class="check">✓</td><td class="check">✓</td></tr>
+            <tr><td>GLPI</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓ Excellent</td><td class="check">✓</td></tr>
+            <tr><td>ServiceNow</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">✗</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2><span class="icon">E</span> Éditeur</h2>
+        <p><strong>Combodo</strong> — Société française éditrice d'iTop depuis 2010. Offre support premium, formations certifiantes et hébergement cloud managé.</p>
+      </div>
+      <div class="card">
+        <h2><span class="icon">L</span> Liens utiles</h2>
+        <ul>
+          <li>source-itop.com (site officiel)</li>
+          <li>GitHub : combodo / itop</li>
+          <li>Documentation & wiki communautaire</li>
+          <li>Marketplace d'extensions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Fiche iTop by Combodo — générée le 6 août 2026</span>
+    <span>Malek addali </span>
+  </div>
+</div>
+</body>
+</html>

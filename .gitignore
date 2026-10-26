@@ -1,0 +1,17 @@
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.mtc*
+*.glo
+*.gls
+*.ist
+*.bbl
+*.blg
+*.pdf
+rapport_complet.tex
